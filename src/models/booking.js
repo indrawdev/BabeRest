@@ -12,7 +12,8 @@ const bookingSchema = new Schema({
       ref: 'User'
    }
 }, {
-   timestamps: true
+   timestamps: true,
+   autoCreate: true
 })
 
 const Booking = mongoose.model('Booking', bookingSchema)

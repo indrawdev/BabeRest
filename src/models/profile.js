@@ -20,7 +20,8 @@ const profileSchema = new Schema({
       ref: 'User'
    }
 }, {
-   timestamps: true
+   timestamps: true,
+   autoCreate: true,
 })
 
 const Profile = mongoose.model('Profile', profileSchema)

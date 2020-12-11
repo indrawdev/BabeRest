@@ -34,9 +34,13 @@ const userSchema = new Schema({
    histories: [{
       type: Schema.Types.ObjectId,
       ref: 'History'
-   }]
+   }],
+   profile: {
+      type: Schema.Types.ObjectId,
+      ref: 'Profile'
+   }
 }, {
-   timestamps: true
+   timestamps: true,
 })
 
 const User = mongoose.model('User', userSchema)

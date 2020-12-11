@@ -12,7 +12,8 @@ const favoriteSchema = new Schema({
       ref: 'User'
    }
 }, {
-   timestamps: true
+   timestamps: true,
+   autoCreate: true,
 })
 
 const Favorite = mongoose.model('Favorite', favoriteSchema)

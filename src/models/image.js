@@ -11,7 +11,8 @@ const imageSchema = new Schema({
       ref: 'Post'
    }
 }, {
-   timestamps: true
+   timestamps: true,
+   autoCreate: true,
 })
 
 const Image = mongoose.model('Image', imageSchema)

@@ -10,7 +10,7 @@ const locationSchema = new Schema({
    map: {
       lng: String,
       lat: String
-   },
+   }
 })
 
 const Location = mongoose.model('Location', locationSchema)

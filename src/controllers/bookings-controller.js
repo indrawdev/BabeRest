@@ -1,5 +1,5 @@
-import Booking from '../models/booking'
-import User from '../models/user'
+import Booking from '../models/booking.js'
+import User from '../models/user.js'
 
 export const getBookingById = async (req, res, next) => { 
    
@@ -21,4 +21,8 @@ export const getBookingByUser = async (req, res, next) => {
    res.status(200).json({ data: bookings })
 
    next()
+}
+
+export const getBookingByPost = async (req, res, next) => { 
+
 }

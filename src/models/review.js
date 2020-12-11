@@ -12,7 +12,8 @@ const reviewSchema = new Schema({
       ref: 'User'
    }
 }, {
-   timestamps: true
+   timestamps: true,
+   autoCreate: true,
 })
 
 const Review = mongoose.model('Review', reviewSchema)
