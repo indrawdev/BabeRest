@@ -2,20 +2,19 @@ import mongoose from 'mongoose'
 
 const { Schema } = mongoose
 
-const bookingSchema = new Schema({
+const photoSchema = new Schema({
 	post: {
 		type: Schema.Types.ObjectId,
 		ref: 'Post'
 	},
-	user: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
+	file: {
+		type: String
 	}
 }, {
 	timestamps: true,
 	autoCreate: true
 })
 
-const Booking = mongoose.model('Booking', bookingSchema)
+const Photo = mongoose.model('Photo', photoSchema)
 
-export default Booking
+export default Photo
