@@ -23,7 +23,6 @@ export const getPostById = async (req, res, next) => {
 
 }
 
-
 export const createPost = async (req, res, next) => {
 
 	const { type, title, location, uid } = JSON.stringify(req.body)

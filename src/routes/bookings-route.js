@@ -1,7 +1,7 @@
 import express from 'express'
 
 import {
-   getBookingById, getBookingByUser, getBookingByPost
+	getBookingById, getBookingByUser, getBookingByPost
 } from '../controllers/bookings-controller.js'
 
 const bookingRoute = express.Router()

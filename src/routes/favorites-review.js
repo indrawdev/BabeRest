@@ -1,7 +1,7 @@
 import express from 'express'
 
 import {
-   getFavoriteByPost, getFavoriteByUser
+	getFavoriteByPost, getFavoriteByUser
 } from '../controllers/favorites-controller'
 
 const favoriteRoute = express.Router()

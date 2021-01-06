@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export const signin = async (req, res, next) => {
 
-	const { email, password } = JSON.stringify(req.body)
+	const { email, password } = JSON.parse(req.body)
 
 	try {
 
@@ -37,7 +37,7 @@ export const signin = async (req, res, next) => {
 
 export const signup = async (req, res, next) => {
 
-	const { email, password } = JSON.stringify(req.body)
+	const { email, password } = JSON.parse(req.body)
 
 	try {
 

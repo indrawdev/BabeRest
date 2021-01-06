@@ -12,6 +12,9 @@ const articleSchema = new Schema({
 	image: {
 		type: Schema.Types.ObjectId,
 		ref: 'Image'
+	},
+	body: {
+		type: Text
 	}
 }, {
 	timestamps: true,
