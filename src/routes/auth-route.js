@@ -1,10 +1,13 @@
 import express from 'express'
 
-import { signin, signup } from '../controllers/auth-controller.js'
+import { frontend, signin, signup, refreshToken, forgotPass } from '../controllers/auth-controller.js'
 
 const authRouter = express.Router()
 
-authRouter.post('signin', signin)
-authRouter.post('signup', signup)
+authRouter.get('/', frontend)
+authRouter.post('/signin', signin)
+authRouter.post('/signup', signup)
+authRouter.get('/refresh-token', refreshToken)
+authRouter.post('/forgot-password', forgotPass)
 
 export default authRouter

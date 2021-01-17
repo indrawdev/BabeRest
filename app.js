@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(authRouter)
 
 mongoose.connect('mongodb://localhost:27017/babe')
-	.then(() => {
+	.then(result => {
 		app.listen(port, () => {
 			console.log(`Server is running on port | ${port}.`)
 		})
