@@ -1,13 +1,21 @@
 import express from 'express'
-
+import validator from 'express-validator'
 import {
-	getBookingById, getBookingByUser, getBookingByPost
+	getBookingByUser,
+	getBookingByPost,
+	createBooking,
+	deleteBooking
 } from '../controllers/bookings-controller.js'
+import { auth } from '../middlewares/auth.js'
 
 const bookingRoute = express.Router()
+const { body } = validator
 
-bookingRoute.get('booking/:bid', getBookingById)
-bookingRoute.get('booking/:uid', getBookingByUser)
-bookingRoute.get('booking/:pid', getBookingByPost)
+bookingRoute.get('bookings/user/:uid', getBookingByUser)
+bookingRoute.get('bookings/post/:pid', getBookingByPost)
+bookingRoute.post('booking',
+	body('pid').not().isEmpty(),
+	body('uid').not().isEmpty(), createBooking)
+bookingRoute.delete('booking/:bid', deleteBooking)
 
 export default bookingRoute

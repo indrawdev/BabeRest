@@ -4,7 +4,7 @@ export const getArticles = async (req, res, next) => {
 
 	try {
 		
-		const articles = await Article.find({}).exec()
+		const articles = await Article.find().exec()
 
 		res.status(200).json({ data: articles })
 		
@@ -20,9 +20,13 @@ export const getArticles = async (req, res, next) => {
 
 }
 
+export const getArticleById = async (req, res, next) => { 
+	
+}
+
 export const createArticle = async (req, res, next) => { 
 	
-	const { title, body } = JSON.stringify(req.body)
+	const { title, body } = JSON.parse(JSON.stringify(req.body))
 
 	try {
 
@@ -47,6 +51,11 @@ export const createArticle = async (req, res, next) => {
 
 export const updateArticle = async (req, res, next) => { 
 
+	const { title, body } = JSON.parse(JSON.stringify(req.body))
+
+	const article = await Article.updateOne({}).exec()
+
+	
 }
 
 export const deleteArticle = async (req, res, next) => {

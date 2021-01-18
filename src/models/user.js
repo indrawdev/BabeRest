@@ -4,10 +4,10 @@ const { Schema } = mongoose
 
 const userSchema = new Schema({
 	email: {
-		type: String, lowercase: true, unique: true, trim: true
+		type: String, required: true, lowercase: true, unique: true, trim: true
 	},
 	password: {
-		type: String, trim: true
+		type: String, required: true, trim: true
 	},
 	level: {
 		type: String
@@ -34,11 +34,7 @@ const userSchema = new Schema({
 	histories: [{
 		type: Schema.Types.ObjectId,
 		ref: 'History'
-	}],
-	profile: {
-		type: Schema.Types.ObjectId,
-		ref: 'Profile'
-	}
+	}]
 }, {
 	timestamps: true,
 })

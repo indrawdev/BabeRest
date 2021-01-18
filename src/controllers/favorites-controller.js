@@ -21,7 +21,6 @@ export const getFavoriteByUser = async (req, res, next) => {
 
 }
 
-
 export const getFavoriteByPost = async (req, res, next) => {
 
 	const postId = req.params.pid
@@ -42,7 +41,7 @@ export const getFavoriteByPost = async (req, res, next) => {
 	}
 }
 
-export const storeFavorite = async (req, res, next) => {
+export const createFavorite = async (req, res, next) => {
 	
 	const { uid, pid } = JSON.stringify(req.body)
 

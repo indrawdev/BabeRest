@@ -1,4 +1,5 @@
 import Post from '../models/post.js'
+import User from '../models/user.js'
 import Photo from '../models/photo.js'
 
 export const getPostById = async (req, res, next) => {
@@ -25,16 +26,20 @@ export const getPostById = async (req, res, next) => {
 
 export const createPost = async (req, res, next) => {
 
-	const { type, title, location, uid } = JSON.stringify(req.body)
+	// const userId = req.params.uid
+
+	const { type, title, slug, uid } = JSON.parse(JSON.stringify(req.body))
 
 	try {
 
-		const post = await Post.create({
+		const _id = await Post.create({
 			type: type,
 			title: title,
-			location: location,
+			slug: slug,
 			user: uid
 		}).exec()
+
+		await User.findByIdAndUpdate(uid, {}, callback).exec()
 
 		res.status(201).json({ data: post })
 

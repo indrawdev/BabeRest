@@ -1,5 +1,8 @@
 import User from '../models/user.js'
+import validator from 'express-validator'
 import jwt from 'jsonwebtoken'
+
+const { validationResult } = validator
 
 export const frontend = async (req, res, next) => {
 
@@ -10,6 +13,13 @@ export const frontend = async (req, res, next) => {
 }
 
 export const signin = async (req, res, next) => {
+
+	const errors = validationResult(req)
+
+	if (!errors.isEmpty())
+	{
+		return res.status(400).json({ errors: errors.array() })
+	}
 
 	const { email, password } = JSON.parse(JSON.stringify(req.body))
 
@@ -43,6 +53,13 @@ export const signin = async (req, res, next) => {
 }
 
 export const signup = async (req, res, next) => {
+
+	const errors = validationResult(req)
+
+	if (!errors.isEmpty())
+	{
+		return res.status(400).json({ errors: errors.array() })
+	}
 
 	const { email, password } = JSON.parse(JSON.stringify(req.body))
 
@@ -79,6 +96,11 @@ export const refreshToken = async (req, res, next) => {
 }
 
 export const forgotPass = async (req, res, next) => {
+
+	if (!errors.isEmpty())
+	{
+		return res.status(400).json({ errors: errors.array() })
+	}
 
 	const { email } = JSON.parse(JSON.stringify(req.body))
 

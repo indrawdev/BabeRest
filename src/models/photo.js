@@ -11,8 +11,7 @@ const photoSchema = new Schema({
 		type: String
 	}
 }, {
-	timestamps: true,
-	autoCreate: true
+	timestamps: true
 })
 
 const Photo = mongoose.model('Photo', photoSchema)

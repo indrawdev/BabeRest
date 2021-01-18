@@ -4,30 +4,29 @@ const { Schema } = mongoose
 
 const postSchema = new Schema({
 	type: {
-		type: String
+		type: String, required: true
 	},
 	title: {
-		type: String
+		type: String, required: true
 	},
 	slug: {
-		type: String
+		type: String, required: true
 	},
 	images: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Image'
 	}],
 	location: {
-		type: Schema.Types.ObjectId,
-		ref: 'Location'
-	},
-	maps: [{
+		address: {
+			type: String
+		},
 		latt: {
 			type: String
 		},
 		long: {
 			type: String
 		}
-	}],
+	},
 	photos: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Photo'
@@ -49,9 +48,10 @@ const postSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'History'
 	}],
-	creator: {
+	user: {
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		required: true
 	}
 }, {
 	timestamps: true
