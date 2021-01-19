@@ -1,6 +1,9 @@
+import validator from 'express-validator'
 import Post from '../models/post.js'
 import User from '../models/user.js'
 import Photo from '../models/photo.js'
+
+const { validationResult } = validator
 
 export const getPostById = async (req, res, next) => {
 
@@ -26,31 +29,42 @@ export const getPostById = async (req, res, next) => {
 
 export const createPost = async (req, res, next) => {
 
-	// const userId = req.params.uid
+	const errors = validationResult(req)
 
-	const { type, title, slug, uid } = JSON.parse(JSON.stringify(req.body))
+	if (!errors.isEmpty()) {
+
+		return res.status(400).json({ errors: errors.array() })
+
+	}
+
+	const { type, title, slug, user } = JSON.parse(JSON.stringify(req.body))
 
 	try {
 
-		const _id = await Post.create({
+		const newPost = await Post.create({
 			type: type,
 			title: title,
 			slug: slug,
-			user: uid
-		}).exec()
+			user: user
+		})
 
-		await User.findByIdAndUpdate(uid, {}, callback).exec()
+		newPost.save().then(post => {
+			User.update({ _id: user }, { $push: { posts: post._id } }, (err) => {
 
-		res.status(201).json({ data: post })
+				if (err) {
+					res.status(400).json({ error: err })
+					next()
+				} else {
+					res.status(201).json({ data: post })
+					next()
+				}
 
-		next()
+			})
+		})
 
 	} catch (error) {
-
 		res.status(500).json({ message: error })
-
 		next()
-
 	}
 
 }

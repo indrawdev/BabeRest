@@ -16,7 +16,7 @@ const postSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Image'
 	}],
-	location: {
+	location: [{
 		address: {
 			type: String
 		},
@@ -26,7 +26,7 @@ const postSchema = new Schema({
 		long: {
 			type: String
 		}
-	},
+	}],
 	photos: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Photo'
